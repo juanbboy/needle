@@ -13,7 +13,8 @@ const Needleres = () => {
 
     const conexion = () => {
         //axios.get('http://localhost:4002/api/needle').then((res) => {
-        axios.get('https://needlecpd.herokuapp.com/api/needle').then((res) => {
+        // axios.get('https://needlecpd.herokuapp.com/api/needle').then((res) => {
+        axios.get('https://bakend.vercel.app/api/needle').then((res) => {
             suma(res.data);
         })
     }

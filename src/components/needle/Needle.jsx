@@ -26,7 +26,7 @@ const Needle = () => {
     });
     const [nam, setNam] = useState("");
     const code = ["600", "601", "603", "605", "608", "609", "900"]
-    const nombre = ["Marina Arias", "Jesus Hurtado", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Alexander Aroca", "Mantenimiento"]
+    const nombre = ["Marina Arias", "Johan", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Ruben", "Mantenimiento"]
     const { cod, name, g09, g05, a76, a75, a06, a09, a12, a16, obs } = formValues;
 
     const isFormValid = () => {
@@ -50,7 +50,8 @@ const Needle = () => {
             // dispatch(startRegisterEmailPassword(name));
 
             // axios.post(`http://localhost:4002/api/regneedle`, formValues)
-            axios.post(`https://needlecpd.herokuapp.com/api/regneedle`, formValues)
+            // axios.post(`https://needlecpd.herokuapp.com/api/regneedle`, formValues)
+            axios.post(`https://bakend.vercel.app/api/regneedle`, formValues)
                 .then(res => {
                     Swal.fire({
                         icon: 'success',
@@ -87,7 +88,7 @@ const Needle = () => {
                         )
                     }
 
-                    <div className="mb-1">
+                    <div className="mb-1 contenedor">
                         <label htmlFor="exampleInputPassword1" className="form-label">Cod Tejedor</label>
                         <input
                             type="text"

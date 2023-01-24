@@ -13,13 +13,15 @@ const Needlelist = () => {
 
     const conexion = () => {
         //axios.get('http://localhost:4002/api/needle').then((res) => {
-        axios.get('https://needlecpd.herokuapp.com/api/needle').then((res) => {
+        // axios.get('https://needlecpd.herokuapp.com/api/needle').then((res) => {
+        axios.get('https://bakend.vercel.app/api/needle').then((res) => {
             setneedle(res.data)
         })
     }
 
     const handleSubmit = async (id) => {
-        await axios.delete(`https://needlecpd.herokuapp.com/api/delneedle/${id}`)
+        // await axios.delete(`https://needlecpd.herokuapp.com/api/delneedle/${id}`)
+        await axios.delete(`https://needle23.netlify.app/api/delneedle/${id}`)
             .then(res => {
                 console.log(res);
                 console.log(res.data);
