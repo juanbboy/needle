@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Table } from 'react-bootstrap';
 
 const Needleres = () => {
     const [needle, setNeedle] = useState([])
-    const name = ["Marina Arias", "Jesus Hurtado", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Alexander Aroca ", "Mantenimiento", "TOTAL"]
+    const name = ["Marina Arias", "Jhoan", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Ruben", "Mantenimiento", "TOTAL"]
     const code = [600, 601, 603, 605, 608, 609, 900]
     let i = 0
 
@@ -60,47 +61,41 @@ const Needleres = () => {
     }
 
     return (
-        <div className="row">
-            <div className="col-md-12">
-                <table className="table table-striped">
-                    <thead className="thead-dark">
-                        <tr>
-                            <th>Codigo</th>
-                            <th>Nombre</th>
-                            <th>G09</th>
-                            <th>G05</th>
-                            <th>1975</th>
-                            <th>1976</th>
-                            <th>7606</th>
-                            <th>7909</th>
-                            <th>0012</th>
-                            <th>0016</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {needle.map(render =>
-                            < tr >
-                                <td>{render[0]}</td>
-                                <td>{render[1]}</td>
-                                <td>{render[2]}</td>
-                                <td>{render[3]}</td>
-                                <td>{render[4]}</td>
-                                <td>{render[5]}</td>
-                                <td>{render[6]}</td>
-                                <td>{render[7]}</td>
-                                <td>{render[8]}</td>
-                                <td>{render[9]}</td>
-                                <td>{render[10]}</td>
-                                <td>{render[11]}</td>
-                            </tr>
-                        )}
-
-                    </tbody>
-                </table >
-            </div >
-        </div >
-
+        <Table striped bordered hover size="sm" responsive="sm">
+            <thead >
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>G09</th>
+                    <th>G05</th>
+                    <th>1975</th>
+                    <th>1976</th>
+                    <th>7606</th>
+                    <th>7909</th>
+                    <th>0012</th>
+                    <th>0016</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {needle.map(render =>
+                    < tr >
+                        <td>{render[0]}</td>
+                        <td>{render[1]}</td>
+                        <td>{render[2]}</td>
+                        <td>{render[3]}</td>
+                        <td>{render[4]}</td>
+                        <td>{render[5]}</td>
+                        <td>{render[6]}</td>
+                        <td>{render[7]}</td>
+                        <td>{render[8]}</td>
+                        <td>{render[9]}</td>
+                        <td>{render[10]}</td>
+                        {/* <td>{render[11]}</td> */}
+                    </tr>
+                )}
+            </tbody>
+        </Table>
     )
 }
 
