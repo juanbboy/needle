@@ -10,7 +10,7 @@ const Needleres = () => {
 
     useEffect(() => {
         conexion();
-    });
+    }, []);
 
     const conexion = () => {
         //axios.get('http://localhost:4002/api/needle').then((res) => {
@@ -61,7 +61,7 @@ const Needleres = () => {
     }
 
     return (
-        <Table striped bordered hover size="sm" responsive="sm">
+        <Table striped hover size="sm" responsive="sm">
             <thead >
                 <tr>
                     <th>Codigo</th>

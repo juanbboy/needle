@@ -1,18 +1,10 @@
-@media (min-width: 320px) {
-    .base {
-        padding: 90px 0px 210px 0px;
-        overflow-x: hidden;
-    }
-}
+@media (min-width: 320px) {}
 
-@media (min-width: 768px) {
-    .base {
-        padding: 75px 0px
-    }
-
-  
-}
+@media (min-width: 768px) {}
 
 @media (min-width: 1024px) {
-  
+
+    .caja {
+        padding: 20px 0px 20px 0px;
+    }
 }

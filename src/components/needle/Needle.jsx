@@ -5,7 +5,7 @@ import { useForm } from '../../hooks/useForm';
 import { setError, removeError } from '../../actions/ui';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-
+import './needle.css';
 
 const Needle = () => {
     const navigate = useNavigate()
@@ -77,7 +77,7 @@ const Needle = () => {
 
     return (
         <div className="row justify-content-center ">
-            <div className="col-md-5 ">
+            <div className="col-sm-5 ">
                 <h4 className="text-center mb-1">Registro de Agujas</h4>
                 <form onSubmit={handleRegister}>
                     {
@@ -117,7 +117,7 @@ const Needle = () => {
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label">G09 </label>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-sm-3">
                             <input
                                 type="text"
                                 className="form-control"
@@ -132,7 +132,7 @@ const Needle = () => {
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label">G05 </label>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-sm-3">
                             <input
                                 type="text"
                                 className="form-control"
@@ -148,7 +148,7 @@ const Needle = () => {
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label">1976 </label>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-sm-3">
                             <input
                                 type="text"
                                 className="form-control"
@@ -162,7 +162,7 @@ const Needle = () => {
                         <div className="col-2" >
                             <label htmlFor="inputext" className="col-form-label">1975 </label>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-sm-3">
                             <input
                                 type="text"
                                 className="form-control"
@@ -178,7 +178,7 @@ const Needle = () => {
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label">7906</label>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-sm-3">
                             <input
                                 type="text"
                                 className="form-control"
@@ -192,7 +192,7 @@ const Needle = () => {
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label">7909 </label>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-sm-3">
                             <input
                                 type="text"
                                 className="form-control"
@@ -208,7 +208,7 @@ const Needle = () => {
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label">0012</label>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-sm-3">
                             <input
                                 type="text"
                                 className="form-control"
@@ -222,7 +222,7 @@ const Needle = () => {
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label">0016 </label>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-sm-3">
                             <input
                                 type="text"
                                 className="form-control"
