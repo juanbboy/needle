@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from '../../hooks/useForm';
@@ -24,9 +24,8 @@ const Needle = () => {
         a16: '',
         obs: ''
     });
-    const [nam, setNam] = useState("");
-    const code = ["600", "601", "603", "605", "608", "609", "900"]
-    const nombre = ["Marina Arias", "Johan", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Ruben", "Mantenimiento"]
+    const code = ["601", "602", "603", "605", "608", "609", "900", "615", "606"]
+    const nombre = ["Johan", "Javier Medina", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Ruben", "Mantenimiento", "Yeimi Calderon", "Lesma Ibargüen"]
     const { cod, name, g09, g05, a76, a75, a06, a09, a12, a16, obs } = formValues;
 
     const isFormValid = () => {
@@ -56,7 +55,7 @@ const Needle = () => {
                     Swal.fire({
                         icon: 'success',
                         title: 'correcto',
-                        showConfimButton: false,
+                        showConfirmButton: false,
                         timer: 1200
                     })
                     reset();
@@ -65,20 +64,20 @@ const Needle = () => {
         }
     }
 
-    const event = (e) => {
-        handleInputChange(e)
 
+    const event = (e) => {
         for (let i = 0; i < code.length; i++) {
             if (e.target.value === code[i]) {
-                setNam(nombre[i])
+                formValues.name = nombre[i]
             }
         }
+        handleInputChange(e)
     }
 
     return (
-        <div className="row justify-content-center ">
-            <div className="col-sm-5 ">
-                <h4 className="text-center mb-1">Registro de Agujas</h4>
+        <div className="row justify-content-center cont">
+            <div className="col-sm-5 px-3 p-2 ">
+                <h4 className="text-center mb-2">Registro de Agujas</h4>
                 <form onSubmit={handleRegister}>
                     {
                         msgError && (
@@ -89,7 +88,7 @@ const Needle = () => {
                     }
 
                     <div className="mb-1 contenedor">
-                        <label htmlFor="exampleInputPassword1" className="form-label">Cod Tejedor</label>
+                        <label htmlFor="inputext" className="form-label">Cod Tejedor</label>
                         <input
                             type="text"
                             className="form-control"
@@ -101,15 +100,15 @@ const Needle = () => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="exampleInputPassword1" className="form-label">Nombre</label>
+                        <label htmlFor="inputext" className="form-label">Nombre </label>
                         <input
                             type="text"
                             className="form-control"
                             id="exampleInputname"
                             name="name"
-                            value={nam}
+                            value={name}
                             onChange={handleInputChange}
-                            required
+                            required={true}
                         />
                     </div>
 
@@ -117,7 +116,7 @@ const Needle = () => {
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label">G09 </label>
                         </div>
-                        <div className="col-sm-3">
+                        <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"
@@ -132,7 +131,7 @@ const Needle = () => {
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label">G05 </label>
                         </div>
-                        <div className="col-sm-3">
+                        <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"
@@ -148,7 +147,7 @@ const Needle = () => {
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label">1976 </label>
                         </div>
-                        <div className="col-sm-3">
+                        <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"
@@ -162,7 +161,7 @@ const Needle = () => {
                         <div className="col-2" >
                             <label htmlFor="inputext" className="col-form-label">1975 </label>
                         </div>
-                        <div className="col-sm-3">
+                        <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"
@@ -178,7 +177,7 @@ const Needle = () => {
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label">7906</label>
                         </div>
-                        <div className="col-sm-3">
+                        <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"
@@ -192,7 +191,7 @@ const Needle = () => {
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label">7909 </label>
                         </div>
-                        <div className="col-sm-3">
+                        <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"
@@ -208,7 +207,7 @@ const Needle = () => {
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label">0012</label>
                         </div>
-                        <div className="col-sm-3">
+                        <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"
@@ -222,7 +221,7 @@ const Needle = () => {
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label">0016 </label>
                         </div>
-                        <div className="col-sm-3">
+                        <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"

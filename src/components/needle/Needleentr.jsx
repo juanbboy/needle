@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useForm } from '../../hooks/useForm';
-// import { setError, removeError } from '../../actions/ui';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
@@ -34,7 +33,7 @@ const Needleentr = () => {
                 Swal.fire({
                     icon: 'success',
                     title: 'correcto',
-                    showConfimButton: false,
+                    showConfirmButton: false,
                     timer: 1200
                 })
                 reset();
@@ -42,15 +41,10 @@ const Needleentr = () => {
             })
     }
 
-
-    const event = (e) => {
-        handleInputChange(e)
-    }
-
     return (
         <div className="row justify-content-center ">
-            <div className="col-md-5 ">
-                <h4 className="text-center p-4">Registro de Entrada</h4>
+            <div className="col-md-5 px-5 ">
+                <h4 className="text-center p-3">Registro de Entrada</h4>
                 <form onSubmit={handleRegister}>
                     {
                         msgError && (
@@ -64,7 +58,7 @@ const Needleentr = () => {
                             <div className="col-2">
                                 <label htmlFor="inputext" className="col-form-label">G09 </label>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-3">
                                 <input
                                     type="text"
                                     className="form-control"
@@ -79,7 +73,7 @@ const Needleentr = () => {
                             <div className="col-2">
                                 <label htmlFor="inputext" className="col-form-label">G05 </label>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-3">
                                 <input
                                     type="text"
                                     className="form-control"
@@ -95,7 +89,7 @@ const Needleentr = () => {
                             <div className="col-2">
                                 <label htmlFor="inputext" className="col-form-label">1976 </label>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-3">
                                 <input
                                     type="text"
                                     className="form-control"
@@ -109,7 +103,7 @@ const Needleentr = () => {
                             <div className="col-2" >
                                 <label htmlFor="inputext" className="col-form-label">1975 </label>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-3">
                                 <input
                                     type="text"
                                     className="form-control"
@@ -125,7 +119,7 @@ const Needleentr = () => {
                             <div className="col-2">
                                 <label htmlFor="inputext" className="col-form-label">7906</label>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-3">
                                 <input
                                     type="text"
                                     className="form-control"
@@ -139,7 +133,7 @@ const Needleentr = () => {
                             <div className="col-2">
                                 <label htmlFor="inputext" className="col-form-label">7909 </label>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-3">
                                 <input
                                     type="text"
                                     className="form-control"
@@ -155,7 +149,7 @@ const Needleentr = () => {
                             <div className="col-2">
                                 <label htmlFor="inputext" className="col-form-label">0012</label>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-3">
                                 <input
                                     type="text"
                                     className="form-control"
@@ -169,7 +163,7 @@ const Needleentr = () => {
                             <div className="col-2">
                                 <label htmlFor="inputext" className="col-form-label">0016 </label>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-3">
                                 <input
                                     type="text"
                                     className="form-control"

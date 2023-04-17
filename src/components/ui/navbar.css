@@ -8,18 +8,16 @@
 
 .nav-link {
   padding-bottom: 10px;
-}
-
-@media (min-width: 1920px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
+  color: #333;
 }
 
 
-.container {
-  max-width: 1030px;
+.Body {
+  background-color: #333;
 }
+
+
+
 
 /*
 * Custom translucent site header
@@ -79,13 +77,3 @@
 /*
 * Extra utilities
 */
-
-.flex-equal>* {
-  flex: 1;
-}
-
-@media (min-width: 768px) {
-  .flex-md-equal>* {
-    flex: 1;
-  }
-}

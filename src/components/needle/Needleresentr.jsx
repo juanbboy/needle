@@ -40,13 +40,12 @@ const Needleresentr = () => {
 
     useEffect(() => {
         total();
-    }, [Valuesres])
+    }, [Valuesres.a16 & Values.a16])
 
 
     const conexion = () => {
         axios.get('https://bakend.vercel.app/api/needleentr').then((res) => {
             suma(res.data);
-            console.log('juan')
         })
 
         axios.get('https://bakend.vercel.app/api/needle').then((res) => {
@@ -54,8 +53,7 @@ const Needleresentr = () => {
         })
 
     }
-    // const juan = (0)
-    //const [juan, setjuan] = useState(second)
+
     const suma = (res) => {
         let g05 = ''
         let g09 = ''
@@ -162,8 +160,7 @@ const Needleresentr = () => {
             a12: Values.a12 - Valuesres.a12,
             a16: Values.a16 - Valuesres.a16,
         })
-
-
+        console.log('juan')
     }
     return (
         <Table striped hover size="sm" responsive="sm">

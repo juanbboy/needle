@@ -7,45 +7,29 @@ import Modal from 'react-bootstrap/Modal';
 import { useForm } from '../../hooks/useForm';
 
 
-
-const Needlelist = () => {
-
+const Needlelistentr = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const [formValues, handleInputChange] = useForm()
-    const { cod, name, g09, g05, a76, a75, a06, a09, a12, a16, obs } = formValues;
+    const { g09, g05, a76, a75, a06, a09, a12, a16, obs } = formValues;
     const [id, setid] = useState()
+
+
     const [needle, setneedle] = useState([])
     const [search, setSearch] = useState()
-    const [Values, setValues] = useState({
-        g05: '',
-        g09: '',
-        a75: '',
-        a76: '',
-        a06: '',
-        a09: '',
-        a12: '',
-        a16: ''
-    });
-
     useEffect(() => {
         conexion()
     }, []);
 
-    useEffect(() => {
-        // conexion()
-        suma()
-    }, [search]);
-
-
     const conexion = () => {
-        axios.get('https://bakend.vercel.app/api/needle').then((res) => {
+        //axios.get('http://localhost:4002/api/needle').then((res) => {
+        // axios.get('https://needlecpd.herokuapp.com/api/needle').then((res) => {
+        axios.get('https://bakend.vercel.app/api/needleentr').then((res) => {
             setneedle(res.data.reverse())
         })
     }
 
-    const handleSubmit = (id) => {
-        // await axios.delete(`https://needlecpd.herokuapp.com/api/delneedle/${id}`)
+    const handleSubmit = async (id) => {
         Swal.fire({
             title: 'Estás seguro?',
             text: "¡No podrás revertir esto!",
@@ -56,7 +40,7 @@ const Needlelist = () => {
             confirmButtonText: 'Si, Borrar!'
         }).then(async (result) => {
             if (result.isConfirmed) {
-                await axios.delete(`https://bakend.vercel.app/api/delneedle/${id}`)
+                await axios.delete(`https://bakend.vercel.app/api/delneedleentr/${id}`)
                     .then(res => {
                         Swal.fire({
                             icon: 'success',
@@ -72,66 +56,13 @@ const Needlelist = () => {
 
     const searcher = (e) => {
         setSearch(e.target.value)
-    }
-
-
-    const results = !search ? needle : needle.filter((dato) => dato.name.toLowerCase().includes(search.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(search.toLocaleLowerCase()) || dato.date.toLowerCase().includes(search.toLocaleLowerCase()))
-    // const results = !search ? needle : needle.filter((dato) => dato.name.toLowerCase().includes(search.toLocaleLowerCase()) & dato.date.toLowerCase().includes(search.toLocaleLowerCase()))
-
-    // setresults(!search ? needle : needle.filter((dato) => dato.name.toLowerCase().includes(search.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(search.toLocaleLowerCase()))
-    // )
-    //results.reverse()
-    const suma = () => {
-        console.log('entro')
-        let g05 = ''
-        let g09 = ''
-        let a75 = ''
-        let a76 = ''
-        let a06 = ''
-        let a09 = ''
-        let a12 = ''
-        let a16 = ''
-
-        results.filter(res => res.g09).map(needle => (
-            g09 = (Number(g09) + needle.g09)
-        ))
-        results.filter(res => res.g05).map(needle => (
-            g05 = (Number(g05) + needle.g05)
-        ))
-        results.filter(res => res.a75).map(needle => (
-            a75 = (Number(a75) + needle.a75)
-        ))
-        results.filter(res => res.a76).map(needle => (
-            a76 = (Number(a76) + needle.a76)
-        ))
-        results.filter(res => res.a06).map(needle => (
-            a06 = (Number(a06) + needle.a06)
-        ))
-        results.filter(res => res.a09).map(needle => (
-            a09 = (Number(a09) + needle.a09)
-        ))
-        results.filter(res => res.a12).map(needle => (
-            a12 = (Number(a12) + needle.a12)
-        ))
-        results.filter(res => res.a16).map(needle => (
-            a16 = (Number(a16) + needle.a16)
-        ))
-
-        setValues({
-            g05: g05,
-            g09: g09,
-            a75: a75,
-            a76: a76,
-            a06: a06,
-            a09: a09,
-            a12: a12,
-            a16: a16
-        })
+        console.log(e.target.value)
     }
 
     const update = async (e) => {
         e.preventDefault();
-        await axios.put(`https://bakend.vercel.app/api/update-needle/${id}`, formValues)
+        await axios.put(`https://bakend.vercel.app/api/update-needleentr/${id}`, formValues)
+            // await axios.put(`http://localhost:4002/api/update-needleentr/${id}`, formValues)
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -149,11 +80,9 @@ const Needlelist = () => {
 
     const obtener = async (id) => {
         setid(id)
-        // await axios.get(`https://bakend.vercel.app/api/edit-needle/${id}`)
-        await axios.get(`https://bakend.vercel.app/api/edit-needle/${id}`)
+        await axios.get(`https://bakend.vercel.app/api/edit-needleentr/${id}`)
+            // await axios.get(`http://localhost:4002/api/edit-needleentr/${id}`)
             .then(res => {
-                formValues.cod = res.data.cod
-                formValues.name = res.data.name
                 formValues.g09 = res.data.g09
                 formValues.g05 = res.data.g05
                 formValues.a76 = res.data.a76
@@ -167,7 +96,7 @@ const Needlelist = () => {
         setShow(true)
     }
 
-
+    const results = !search ? needle : needle.filter((dato) => dato.name.toLowerCase().includes(search.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(search.toLocaleLowerCase()) || dato.date.toLowerCase().includes(search.toLocaleLowerCase()))
     if (!needle) return null;
 
     return (
@@ -180,7 +109,6 @@ const Needlelist = () => {
                         </div>
 
                         <input value={search} onChange={searcher} type="text" placeholder='Search' className='form-control' />
-
                     </div>
                 </div>
             </form >
@@ -189,8 +117,6 @@ const Needlelist = () => {
                 <thead >
                     <tr>
                         <th>Fecha</th>
-                        <th>Codigo</th>
-                        <th>Tejedor</th>
                         <th>G09</th>
                         <th>G05</th>
                         <th>1976</th>
@@ -206,12 +132,10 @@ const Needlelist = () => {
                     {results.map(needle =>
                         <tr>
                             <td>{needle.date}</td>
-                            <td>{needle.cod}</td>
-                            <td>{needle.name}</td>
                             <td>{needle.g09}</td>
                             <td>{needle.g05}</td>
-                            <td>{needle.a76}</td>
                             <td>{needle.a75}</td>
+                            <td>{needle.a76}</td>
                             <td>{needle.a06}</td>
                             <td>{needle.a09}</td>
                             <td>{needle.a12}</td>
@@ -221,57 +145,13 @@ const Needlelist = () => {
                             <td><button className="btn-danger" onClick={handleSubmit.bind(this, needle._id)}>Elimina</button></td>
                         </tr>
                     )}
-                    < tr >
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>{Values.g09}</td>
-                        <td>{Values.g05}</td>
-                        <td>{Values.a75}</td>
-                        <td>{Values.a76}</td>
-                        <td>{Values.a06}</td>
-                        <td>{Values.a09}</td>
-                        <td>{Values.a12}</td>
-                        <td>{Values.a16}</td>
-                        <td></td>
-                        <td></td>
-                        {/* <td>{render[11]}</td> */}
-                    </tr>
                 </tbody>
             </Table >
-
-
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Edita Salida</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-
-                    <div className="mb-1 contenedor">
-                        <label htmlFor="exampleInputPassword1" className="form-label">Cod Tejedor</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="exampleInputname"
-                            name="cod"
-                            value={cod}
-                            onChange={handleInputChange}
-                            required={true}
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputPassword1" className="form-label">Nombre</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="exampleInputname"
-                            name="name"
-                            value={name}
-                            onChange={handleInputChange}
-                            required={true}
-                        />
-                    </div>
-
                     <div className="row mb-3 justify-content-center">
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label">G09 </label>
@@ -420,8 +300,9 @@ const Needlelist = () => {
                 </Modal.Footer>
             </Modal>
 
+
         </div>
 
     );
 }
-export default Needlelist
+export default Needlelistentr

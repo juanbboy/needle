@@ -6,12 +6,13 @@ import Needlelist from '../components/needle/Needlelist'
 import Needleres from '../components/needle/Needleres'
 import Needleentr from '../components/needle/Needleentr'
 import Needleresentr from '../components/needle/Needleresentr'
+import Needlelistentr from '../components/needle/Needlelistentr'
 
 const DashboardRouter = () => {
     return (
         <>
             <Navbarr />
-            <div className="container">
+            <div className="px-3">
                 <Routes>
                     <Route path="/" element={<Needle />} />
                     <Route path="/needle" element={<Needle />} />
@@ -19,6 +20,7 @@ const DashboardRouter = () => {
                     <Route path="/needleres" element={<Needleres />} />
                     <Route path="/needleentr" element={<Needleentr />} />
                     <Route path="/needleresentr" element={<Needleresentr />} />
+                    <Route path="/needlelistentr" element={<Needlelistentr />} />
                 </Routes>
             </div>
         </>
