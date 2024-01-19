@@ -98,8 +98,8 @@ const Needleres = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {needle.map(render =>
-                        < tr >
+                    {needle.map((render) => (
+                        <tr>
                             <td>{render[0]}</td>
                             <td>{render[1]}</td>
                             <td>{render[2]}</td>
@@ -113,7 +113,7 @@ const Needleres = () => {
                             <td>{render[10]}</td>
                             {/* <td>{render[11]}</td> */}
                         </tr>
-                    )}
+                    ))}
                 </tbody>
             </Table>
         </div>

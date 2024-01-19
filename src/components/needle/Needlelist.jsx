@@ -33,7 +33,6 @@ const Needlelist = () => {
     }, []);
 
     useEffect(() => {
-        // conexion()
         suma()
     }, [search]);
 
@@ -203,8 +202,8 @@ const Needlelist = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {results.map(needle =>
-                        <tr>
+                    {results.map((needle) =>
+                        <tr key={needle._id}>
                             <td>{needle.date}</td>
                             <td>{needle.cod}</td>
                             <td>{needle.name}</td>
