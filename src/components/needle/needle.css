@@ -1,0 +1,14 @@
+@media (min-width: 320px) {}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 1024px) {
+
+    .caja {
+        padding: 20px 0px 20px 0px;
+    }
+
+    .cont {
+        padding: 0px 140px;
+    }
+}
