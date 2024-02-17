@@ -5,8 +5,8 @@ import { Table } from 'react-bootstrap';
 const Needleres = () => {
     const [need, setNeed] = useState()
     const [needle, setNeedle] = useState([])
-    const name = ["Javier Medina", "Yeimi Calderon", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Ruben Salinas", "Lesma Ibargüen", "Mantenimiento", "TOTAL"]
-    const code = [602, 615, 603, 605, 608, 609, 606, 900]
+    const name = ["Javier Medina", "Yeimi Calderon", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Ruben Salinas", "Lesma Ibargüen", "Sandra Tilano", "Mantenimiento", "TOTAL"]
+    const code = [602, 615, 603, 605, 608, 609, 606, 624, 900]
     let i = 0
 
     useEffect(() => {
@@ -98,8 +98,8 @@ const Needleres = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {needle.map(render =>
-                        < tr >
+                    {needle.map((render) => (
+                        <tr>
                             <td>{render[0]}</td>
                             <td>{render[1]}</td>
                             <td>{render[2]}</td>
@@ -113,7 +113,7 @@ const Needleres = () => {
                             <td>{render[10]}</td>
                             {/* <td>{render[11]}</td> */}
                         </tr>
-                    )}
+                    ))}
                 </tbody>
             </Table>
         </div>

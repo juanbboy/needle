@@ -6,8 +6,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useForm } from '../../hooks/useForm';
 
-
-
 const Needlelist = () => {
 
     const [show, setShow] = useState(false);
@@ -33,7 +31,6 @@ const Needlelist = () => {
     }, []);
 
     useEffect(() => {
-        // conexion()
         suma()
     }, [search]);
 
@@ -203,8 +200,8 @@ const Needlelist = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {results.map(needle =>
-                        <tr>
+                    {results.map((needle) =>
+                        <tr key={needle._id}>
                             <td>{needle.date}</td>
                             <td>{needle.cod}</td>
                             <td>{needle.name}</td>
