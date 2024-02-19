@@ -32,7 +32,7 @@ const Needlelist = () => {
 
     useEffect(() => {
         suma()
-    }, [search]);
+    }, [search, needle]);
 
 
     const conexion = () => {
@@ -174,13 +174,10 @@ const Needlelist = () => {
                         <div className="col-2">
                             <label htmlFor="inputext" className="col-form-label"><h5>Search</h5></label>
                         </div>
-
                         <input value={search} onChange={searcher} type="text" placeholder='Search' className='form-control' />
-
                     </div>
                 </div>
             </form >
-
             <Table striped hover size="sm" responsive="sm" >
                 <thead >
                     <tr>
@@ -199,6 +196,22 @@ const Needlelist = () => {
                     </tr>
                 </thead>
                 <tbody>
+                    < tr >
+                        <td>Total</td>
+                        <td></td>
+                        <td></td>
+                        <td>{Values.g09}</td>
+                        <td>{Values.g05}</td>
+                        <td>{Values.a75}</td>
+                        <td>{Values.a76}</td>
+                        <td>{Values.a06}</td>
+                        <td>{Values.a09}</td>
+                        <td>{Values.a12}</td>
+                        <td>{Values.a16}</td>
+                        <td></td>
+                        <td></td>
+                        {/* <td>{render[11]}</td> */}
+                    </tr>
                     {results.map((needle) =>
                         <tr key={needle._id}>
                             <td>{needle.date}</td>
@@ -217,25 +230,9 @@ const Needlelist = () => {
                             <td><button className="btn-danger" onClick={handleSubmit.bind(this, needle._id)}>Elimina</button></td>
                         </tr>
                     )}
-                    < tr >
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>{Values.g09}</td>
-                        <td>{Values.g05}</td>
-                        <td>{Values.a75}</td>
-                        <td>{Values.a76}</td>
-                        <td>{Values.a06}</td>
-                        <td>{Values.a09}</td>
-                        <td>{Values.a12}</td>
-                        <td>{Values.a16}</td>
-                        <td></td>
-                        <td></td>
-                        {/* <td>{render[11]}</td> */}
-                    </tr>
+
                 </tbody>
             </Table >
-
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

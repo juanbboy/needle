@@ -56,7 +56,6 @@ const Needlelistentr = () => {
 
     const searcher = (e) => {
         setSearch(e.target.value)
-        console.log(e.target.value)
     }
 
     const update = async (e) => {
@@ -96,7 +95,7 @@ const Needlelistentr = () => {
         setShow(true)
     }
 
-    const results = !search ? needle : needle.filter((dato) => dato.name.toLowerCase().includes(search.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(search.toLocaleLowerCase()) || dato.date.toLowerCase().includes(search.toLocaleLowerCase()))
+    const results = !search ? needle : needle.filter((dato) => dato.obs.toLowerCase().includes(search.toLocaleLowerCase()) || dato.date.toLowerCase().includes(search.toLocaleLowerCase()))
     if (!needle) return null;
 
     return (
