@@ -104,10 +104,10 @@ const Needlelistentr = () => {
                 <div className='caja'>
                     <div className="row mb-3 justify-content-center">
                         <div className="col-2">
-                            <label htmlFor="inputext" className="col-form-label"><h5>Search</h5></label>
+                            <label htmlFor="search" className="col-form-label"><h5>Search</h5></label>
                         </div>
 
-                        <input value={search} onChange={searcher} type="text" placeholder='Search' className='form-control' />
+                        <input value={search} onChange={searcher} id="search" type="text" placeholder='Search' className='form-control' />
                     </div>
                 </div>
             </form >
@@ -153,13 +153,13 @@ const Needlelistentr = () => {
                 <Modal.Body>
                     <div className="row mb-3 justify-content-center">
                         <div className="col-2">
-                            <label htmlFor="inputext" className="col-form-label">G09 </label>
+                            <label htmlFor="g09" className="col-form-label">G09 </label>
                         </div>
                         <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"
-                                id="exampleInputname"
+                                id="g09"
                                 name="g09"
                                 value={g09}
                                 onChange={handleInputChange}
@@ -168,13 +168,13 @@ const Needlelistentr = () => {
                         </div>
 
                         <div className="col-2">
-                            <label htmlFor="inputext" className="col-form-label">G05 </label>
+                            <label htmlFor="g05" className="col-form-label">G05 </label>
                         </div>
                         <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"
-                                id="exampleInputname"
+                                id="g05"
                                 name="g05"
                                 value={g05}
                                 onChange={handleInputChange}
@@ -184,13 +184,13 @@ const Needlelistentr = () => {
 
                     <div className="row mb-3 justify-content-center">
                         <div className="col-2">
-                            <label htmlFor="inputext" className="col-form-label">1976 </label>
+                            <label htmlFor="a76" className="col-form-label">1976 </label>
                         </div>
                         <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"
-                                id="exampleInputname"
+                                id="a76"
                                 name="a76"
                                 value={a76}
                                 onChange={handleInputChange}
@@ -198,13 +198,13 @@ const Needlelistentr = () => {
                         </div>
 
                         <div className="col-2" >
-                            <label htmlFor="inputext" className="col-form-label">1975 </label>
+                            <label htmlFor="a75" className="col-form-label">1975 </label>
                         </div>
                         <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"
-                                id="exampleInputname"
+                                id="a75"
                                 name="a75"
                                 value={a75}
                                 onChange={handleInputChange}
@@ -214,13 +214,13 @@ const Needlelistentr = () => {
 
                     <div className="row mb-3 justify-content-center">
                         <div className="col-2">
-                            <label htmlFor="inputext" className="col-form-label">7906</label>
+                            <label htmlFor="a06" className="col-form-label">7906</label>
                         </div>
                         <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"
-                                id="exampleInputname"
+                                id="a06"
                                 name="a06"
                                 value={a06}
                                 onChange={handleInputChange}
@@ -228,13 +228,13 @@ const Needlelistentr = () => {
                         </div>
 
                         <div className="col-2">
-                            <label htmlFor="inputext" className="col-form-label">7909 </label>
+                            <label htmlFor="a09" className="col-form-label">7909 </label>
                         </div>
                         <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"
-                                id="exampleInputname"
+                                id="a09"
                                 name="a09"
                                 value={a09}
                                 onChange={handleInputChange}
@@ -244,13 +244,13 @@ const Needlelistentr = () => {
 
                     <div className="row mb-1 justify-content-center">
                         <div className="col-2">
-                            <label htmlFor="inputext" className="col-form-label">0012</label>
+                            <label htmlFor="a12" className="col-form-label">0012</label>
                         </div>
                         <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"
-                                id="exampleInputname"
+                                id="a12"
                                 name="a12"
                                 value={a12}
                                 onChange={handleInputChange}
@@ -258,13 +258,13 @@ const Needlelistentr = () => {
                         </div>
 
                         <div className="col-2">
-                            <label htmlFor="inputext" className="col-form-label">0016 </label>
+                            <label htmlFor="a16" className="col-form-label">0016 </label>
                         </div>
                         <div className="col-3">
                             <input
                                 type="text"
                                 className="form-control"
-                                id="exampleInputname"
+                                id="a16"
                                 name="a16"
                                 value={a16}
                                 onChange={handleInputChange}
@@ -274,13 +274,13 @@ const Needlelistentr = () => {
 
                     <div className="row mb-3 justify-content-center">
                         <div>
-                            <label htmlFor="inputext" className="col-form-label">Observaciones </label>
+                            <label htmlFor="obs" className="col-form-label">Observaciones </label>
                         </div>
                         <div className="col">
                             <input
                                 type="text"
                                 className="form-control"
-                                id="exampleInputname"
+                                id="obs"
                                 name="obs"
                                 value={obs}
                                 onChange={handleInputChange}

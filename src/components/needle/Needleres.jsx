@@ -74,9 +74,9 @@ const Needleres = () => {
                 <div className='caja'>
                     <div className="row mb-3 justify-content-center">
                         <div className="col-2">
-                            <label htmlFor="inputext" className="col-form-label"><h5>Search</h5></label>
+                            <label htmlFor="search" className="col-form-label"><h5>Search</h5></label>
                         </div>
-                        <input onChange={searcher} type="text" placeholder='Search' className='form-control' />
+                        <input onChange={searcher} id="search" type="text" placeholder='Search' className='form-control' />
                     </div>
                 </div>
             </form >

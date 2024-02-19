@@ -109,6 +109,7 @@ const Needle = () => {
                             value={name}
                             onChange={handleInputChange}
                             required={true}
+                            autocomplete="on"
                         />
                     </div>
 
