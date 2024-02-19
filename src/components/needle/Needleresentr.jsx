@@ -4,6 +4,14 @@ import { Table } from 'react-bootstrap';
 import { useForm } from '../../hooks/useForm';
 
 const Needleresentr = () => {
+    // const [date, setdate] = useState({
+    //     date: {
+    //         type: Date,
+    //         default: Date.now
+    //     }
+    // })
+    // const timeElapsed = Date.now()
+    // const today = new Date(timeElapsed);
     const [Values, setValues] = useState({
         g05: '',
         g09: '',
@@ -45,7 +53,7 @@ const Needleresentr = () => {
         a16: ''
     });
 
-    const [formValues, handleInputChange, reset] = useForm({
+    const [formValues, handleInputChange] = useForm({
         g05: '',
         g09: '',
         a75: '',
@@ -64,22 +72,25 @@ const Needleresentr = () => {
 
     useEffect(() => {
         total();
-    }, [Valuesres.a16 & Values.a16])
+    }, [Valuesres, Values])
 
     const event = (e) => {
         handleInputChange(e)
     }
 
+    // const Dat = () => {
+    //     console.log(today.toDateString())
+    //     console.log(date)
+    //     console.log(Date.now)
+    // }
 
     const conexion = () => {
         axios.get('https://bakend.vercel.app/api/needleentr').then((res) => {
             suma(res.data);
         })
-
         axios.get('https://bakend.vercel.app/api/needle').then((res) => {
             sumares(res.data)
         })
-
     }
 
     const suma = (res) => {
@@ -188,7 +199,6 @@ const Needleresentr = () => {
             a12: Values.a12 - Valuesres.a12,
             a16: Values.a16 - Valuesres.a16,
         })
-        console.log('juan')
     }
 
     const Diferencia = () => {
@@ -284,7 +294,7 @@ const Needleresentr = () => {
                         <td> <input
                             type="text"
                             className="form-control text-center"
-                            id="exampleInputname"
+                            id="field1"
                             name="g09"
                             value={g09}
                             onChange={event}
@@ -293,7 +303,7 @@ const Needleresentr = () => {
                         <td> <input
                             type="text"
                             className="form-control text-center"
-                            id="exampleInputname"
+                            id="field2"
                             name="g05"
                             value={g05}
                             onChange={event}
@@ -302,7 +312,7 @@ const Needleresentr = () => {
                         <td> <input
                             type="text"
                             className="form-control text-center"
-                            id="exampleInputname"
+                            id="field3"
                             name="a75"
                             value={a75}
                             onChange={event}
@@ -311,7 +321,7 @@ const Needleresentr = () => {
                         <td> <input
                             type="text"
                             className="form-control text-center"
-                            id="exampleInputname"
+                            id="field4"
                             name="a76"
                             value={a76}
                             onChange={event}
@@ -320,7 +330,7 @@ const Needleresentr = () => {
                         <td> <input
                             type="text"
                             className="form-control text-center"
-                            id="exampleInputname"
+                            id="field5"
                             name="a06"
                             value={a06}
                             onChange={event}
@@ -329,7 +339,7 @@ const Needleresentr = () => {
                         <td> <input
                             type="text"
                             className="form-control text-center"
-                            id="exampleInputname"
+                            id="field6"
                             name="a09"
                             value={a09}
                             onChange={event}
@@ -338,7 +348,7 @@ const Needleresentr = () => {
                         <td> <input
                             type="text"
                             className="form-control text-center"
-                            id="exampleInputname"
+                            id="field7"
                             name="a12"
                             value={a12}
                             onChange={event}
@@ -347,7 +357,7 @@ const Needleresentr = () => {
                         <td> <input
                             type="text"
                             className="form-control text-center"
-                            id="exampleInputname"
+                            id="field8"
                             name="a16"
                             value={a16}
                             onChange={event}
@@ -370,6 +380,11 @@ const Needleresentr = () => {
             <div className='text-center'>
                 <button className="btn btn-lg btn-primary" onClick={Diferencia} >Calcular</button>
             </div>
+
+            {/* <div className='text-center'>
+                <button className="btn btn-lg btn-primary" onClick={Dat} >dat</button>
+            </div> */}
+
         </div>
     )
 }

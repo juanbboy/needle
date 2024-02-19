@@ -25,7 +25,7 @@ const Needle = () => {
         obs: ''
     });
     const code = ["602", "603", "605", "608", "609", "900", "615", "606", "624"]
-    const nombre = ["Javier Medina", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Ruben", "Mantenimiento", "Yeimi Calderon", "Lesma Ibargüen", "Sandra Tilano"]
+    const nombre = ["Javier Medina", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Ruben Salinas", "Mantenimiento", "Yeimi Calderon", "Lesma Ibargüen", "Sandra Tilano"]
     const { cod, name, g09, g05, a76, a75, a06, a09, a12, a16, obs } = formValues;
 
     const isFormValid = () => {
