@@ -7,14 +7,14 @@ import Modal from 'react-bootstrap/Modal';
 import { useForm } from '../../hooks/useForm';
 
 const Needlelist = () => {
-
+    const [results, setresults] = useState([])
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const [formValues, handleInputChange] = useForm()
     const { cod, name, g09, g05, a76, a75, a06, a09, a12, a16, obs } = formValues;
     const [id, setid] = useState()
     const [needle, setneedle] = useState([])
-    const [search, setSearch] = useState()
+    const [search, setSearch] = useState([])
     const [Values, setValues] = useState({
         g05: '',
         g09: '',
@@ -32,12 +32,13 @@ const Needlelist = () => {
 
     useEffect(() => {
         suma()
-    }, [search, needle]);
+    }, [results, needle]);
 
 
     const conexion = () => {
         axios.get('https://bakend.vercel.app/api/needle').then((res) => {
             setneedle(res.data.reverse())
+            setresults(res.data.reverse())
         })
     }
 
@@ -67,11 +68,28 @@ const Needlelist = () => {
         })
     }
 
+    // const searcher = (e) => {
+    //     setSearch(e.target.value)
+    // }
+
     const searcher = (e) => {
-        setSearch(e.target.value)
+        if (!e.target.value) {
+            setresults(needle)
+        } else {
+            setresults(needle.filter((dato) => dato.name.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase())))
+            setSearch(needle.filter((dato) => dato.name.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase())))
+        }
     }
 
-    const results = !search ? needle : needle.filter((dato) => dato.name.toLowerCase().includes(search.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(search.toLocaleLowerCase()) || dato.date.toLowerCase().includes(search.toLocaleLowerCase()))
+    const searcher2 = (e) => {
+        setresults(needle.filter((dato) => dato.name.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase())))
+
+    }
+
+
+
+
+    // const results = !search ? needle : needle.filter((dato) => dato.name.toLowerCase().includes(search.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(search.toLocaleLowerCase()) || dato.date.toLowerCase().includes(search.toLocaleLowerCase()))
     // const results = !search ? needle : needle.filter((dato) => dato.name.toLowerCase().includes(search.toLocaleLowerCase()) & dato.date.toLowerCase().includes(search.toLocaleLowerCase()))
 
     // setresults(!search ? needle : needle.filter((dato) => dato.name.toLowerCase().includes(search.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(search.toLocaleLowerCase()))
@@ -170,11 +188,18 @@ const Needlelist = () => {
         <div>
             <form >
                 <div className='caja'>
-                    <div className="row mb-3 justify-content-center">
+                    <div className="row mb-3 justify-content-start">
                         <div className="col-2">
                             <label htmlFor="search" className="col-form-label"><h5>Search</h5></label>
                         </div>
-                        <input value={search} onChange={searcher} type="text" id="search" placeholder='Search' className='form-control' />
+                        <div className="row ">
+                            <div className="col-2">
+                                <input onChange={searcher} id="search" type="text" placeholder='Search' className='form-control col-sm-4' />
+                            </div>
+                            <div className="col-2">
+                                <input onChange={searcher2} id="search2" type="text" placeholder='Search' className='form-control col-sm-4' />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form >

@@ -84,12 +84,18 @@ const Needleres = () => {
         <div>
             <form >
                 <div className='caja'>
-                    <div className="row mb-3 justify-content-center">
+                    <div className="row mb-3 justify-content-start">
                         <div className="col-2">
                             <label htmlFor="search" className="col-form-label"><h5>Search</h5></label>
                         </div>
-                        <input onChange={searcher} id="search" type="text" placeholder='Search' className='form-control' />
-                        <input onChange={searcher2} id="search2" type="text" placeholder='Search' className='form-control' />
+                        <div className="row ">
+                            <div className="col-2">
+                                <input onChange={searcher} id="search" type="text" placeholder='Search' className='form-control col-sm-4' />
+                            </div>
+                            <div className="col-2">
+                                <input onChange={searcher2} id="search2" type="text" placeholder='Search' className='form-control col-sm-4' />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form >
