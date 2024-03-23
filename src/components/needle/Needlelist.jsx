@@ -202,8 +202,8 @@ const Needlelist = () => {
                         <td></td>
                         <td>{Values.g09}</td>
                         <td>{Values.g05}</td>
-                        <td>{Values.a75}</td>
                         <td>{Values.a76}</td>
+                        <td>{Values.a75}</td>
                         <td>{Values.a06}</td>
                         <td>{Values.a09}</td>
                         <td>{Values.a12}</td>

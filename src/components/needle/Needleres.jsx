@@ -5,6 +5,7 @@ import { Table } from 'react-bootstrap';
 const Needleres = () => {
     const [need, setNeed] = useState()
     const [needle, setNeedle] = useState([])
+    const [search, setsearch] = useState([])
     const name = ["Javier Medina", "Yeimi Calderon", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Ruben Salinas", "Lesma Ibargüen", "Sandra Tilano", "Mantenimiento", "TOTAL"]
     const code = [602, 615, 603, 605, 608, 609, 606, 624, 900]
     let i = 0
@@ -22,14 +23,25 @@ const Needleres = () => {
     }
 
     const searcher = (e) => {
-        suma(!e.target.value ? need : need.filter((dato) => dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase()))
+        if (!e.target.value) {
+            suma(need)
+        } else {
+            suma(need.filter((dato) => dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(e.target.value.toLocaleLowerCase())))
+            setsearch(need.filter((dato) => dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(e.target.value.toLocaleLowerCase())))
+        }
+    }
+
+    const searcher2 = (e) => {
+        suma(search.filter((dato) => dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(e.target.value.toLocaleLowerCase()))
         )
     }
+
+
 
     //setNeedle(!search ? need : need.filter((dato) => dato.date.toLowerCase().includes(search.toLocaleLowerCase())))
 
     const suma = (res) => {
-        const suma = [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        const suma = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
         for (let i = 0; i < code.length; i++) {
             res.filter(nombre => nombre.cod === code[i]).map(needle => (
                 suma[i][0] = suma[i][0] + needle.g09
@@ -60,7 +72,7 @@ const Needleres = () => {
             ))
         }
         for (let i = 0; i < suma.length; i++) {
-            suma[8][i] = suma[0][i] + suma[1][i] + suma[2][i] + suma[3][i] + suma[4][i] + suma[5][i] + suma[6][i] + + suma[7][i]
+            suma[9][i] = suma[0][i] + suma[1][i] + suma[2][i] + suma[3][i] + suma[4][i] + suma[5][i] + suma[6][i] + suma[7][i] + suma[8][i]
         }
         suma.map(sum => (
             (sum.unshift(code[i], name[i]), i++)
@@ -77,6 +89,7 @@ const Needleres = () => {
                             <label htmlFor="search" className="col-form-label"><h5>Search</h5></label>
                         </div>
                         <input onChange={searcher} id="search" type="text" placeholder='Search' className='form-control' />
+                        <input onChange={searcher2} id="search2" type="text" placeholder='Search' className='form-control' />
                     </div>
                 </div>
             </form >
@@ -88,8 +101,8 @@ const Needleres = () => {
                         <th>Nombre</th>
                         <th>G09</th>
                         <th>G05</th>
-                        <th>1975</th>
                         <th>1976</th>
+                        <th>1975</th>
                         <th>7606</th>
                         <th>7909</th>
                         <th>0012</th>
