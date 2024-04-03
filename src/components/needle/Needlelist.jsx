@@ -38,7 +38,7 @@ const Needlelist = () => {
     const conexion = () => {
         axios.get('https://bakend.vercel.app/api/needle').then((res) => {
             setneedle(res.data.reverse())
-            setresults(res.data.reverse())
+            setresults(res.data)
         })
     }
 
@@ -187,7 +187,7 @@ const Needlelist = () => {
     return (
         <div>
             <form >
-                <div className='caja'>
+                <div className='caja p-1'>
                     <div className="row mb-3 justify-content-start">
                         <div className="col-2">
                             <label htmlFor="search" className="col-form-label"><h5>Search</h5></label>
