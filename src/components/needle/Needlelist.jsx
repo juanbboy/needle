@@ -5,6 +5,7 @@ import { Table } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useForm } from '../../hooks/useForm';
+import { Next } from 'react-bootstrap/esm/PageItem';
 
 const Needlelist = () => {
     const [results, setresults] = useState([])
@@ -28,17 +29,20 @@ const Needlelist = () => {
 
     useEffect(() => {
         conexion()
+        // searcher()
     }, []);
 
     useEffect(() => {
         suma()
-    }, [results, needle]);
+
+    }, [search, needle]);
 
 
     const conexion = () => {
         axios.get('https://bakend.vercel.app/api/needle').then((res) => {
             setneedle(res.data.reverse())
-            setresults(res.data)
+            setSearch(res.data)
+
         })
     }
 
@@ -73,16 +77,13 @@ const Needlelist = () => {
     // }
 
     const searcher = (e) => {
-        if (!e.target.value) {
-            setresults(needle)
-        } else {
-            setresults(needle.filter((dato) => dato.name.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase())))
-            setSearch(needle.filter((dato) => dato.name.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase())))
-        }
+        // setresults(needle.filter((dato) => dato.name.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase())))
+        setSearch(needle.filter((dato) => dato.name.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase())))
+
     }
 
     const searcher2 = (e) => {
-        setresults(needle.filter((dato) => dato.name.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase())))
+        setSearch(search.filter((dato) => dato.name.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase())))
 
     }
 
@@ -106,28 +107,28 @@ const Needlelist = () => {
         let a12 = ''
         let a16 = ''
 
-        results.filter(res => res.g09).map(needle => (
+        search.filter(res => res.g09).map(needle => (
             g09 = (Number(g09) + needle.g09)
         ))
-        results.filter(res => res.g05).map(needle => (
+        search.filter(res => res.g05).map(needle => (
             g05 = (Number(g05) + needle.g05)
         ))
-        results.filter(res => res.a75).map(needle => (
+        search.filter(res => res.a75).map(needle => (
             a75 = (Number(a75) + needle.a75)
         ))
-        results.filter(res => res.a76).map(needle => (
+        search.filter(res => res.a76).map(needle => (
             a76 = (Number(a76) + needle.a76)
         ))
-        results.filter(res => res.a06).map(needle => (
+        search.filter(res => res.a06).map(needle => (
             a06 = (Number(a06) + needle.a06)
         ))
-        results.filter(res => res.a09).map(needle => (
+        search.filter(res => res.a09).map(needle => (
             a09 = (Number(a09) + needle.a09)
         ))
-        results.filter(res => res.a12).map(needle => (
+        search.filter(res => res.a12).map(needle => (
             a12 = (Number(a12) + needle.a12)
         ))
-        results.filter(res => res.a16).map(needle => (
+        search.filter(res => res.a16).map(needle => (
             a16 = (Number(a16) + needle.a16)
         ))
 
@@ -237,7 +238,7 @@ const Needlelist = () => {
                         <td></td>
                         {/* <td>{render[11]}</td> */}
                     </tr>
-                    {results.map((needle) =>
+                    {search.map((needle) =>
                         <tr key={needle._id}>
                             <td>{needle.date}</td>
                             <td>{needle.cod}</td>
