@@ -40,8 +40,8 @@ const Needlelist = () => {
 
     const conexion = () => {
         axios.get('https://bakend.vercel.app/api/needle').then((res) => {
-            setneedle(res.data.reverse())
-            setSearch(res.data)
+            setneedle(res.data)
+            setSearch(res.data.reverse())
 
         })
     }
