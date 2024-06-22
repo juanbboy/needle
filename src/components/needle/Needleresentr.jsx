@@ -225,6 +225,7 @@ const Needleresentr = () => {
 
     const local = () => {
         localStorage.setItem("from", JSON.stringify(formValues))
+        window.alert("Guardado");
     }
 
     const Diferencia = () => {
@@ -406,8 +407,8 @@ const Needleresentr = () => {
             </Table>
             <div></div>
             <div className='text-center'>
-                <button className="btn btn-lg btn-primary" onClick={Diferencia} >Calcular</button>
-                <button className="btn btn-lg btn-primary" onClick={local} >Guardar</button>
+                <button className="btn btn-lg btn-primary mx-1" onClick={Diferencia} >Calcular</button>
+                <button className="btn btn-lg btn-primary mx-1" onClick={local} >Guardar</button>
             </div>
 
 
