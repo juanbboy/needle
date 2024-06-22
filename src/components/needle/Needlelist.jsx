@@ -164,7 +164,6 @@ const Needlelist = () => {
 
     const obtener = async (id) => {
         setid(id)
-        // await axios.get(`https://bakend.vercel.app/api/edit-needle/${id}`)
         await axios.get(`https://bakend.vercel.app/api/edit-needle/${id}`)
             .then(res => {
                 formValues.cod = res.data.cod

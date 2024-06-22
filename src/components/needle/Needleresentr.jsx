@@ -64,14 +64,19 @@ const Needleresentr = () => {
         a16: ''
     });
 
+    // const [locals, setlocals] = useState()
     const { g09, g05, a76, a75, a06, a09, a12, a16 } = formValues;
 
     useEffect(() => {
+
         conexion();
+
+        carga()
     }, []);
 
     useEffect(() => {
         total();
+
     }, [Valuesres, Values])
 
     const event = (e) => {
@@ -201,6 +206,27 @@ const Needleresentr = () => {
         })
     }
 
+    const carga = () => {
+        let locals = localStorage.getItem('from')
+        locals = JSON.parse(locals)
+        if (locals !== null) {
+            console.log(locals, "carga")
+            formValues.g09 = locals.g09
+            formValues.g05 = locals.g05
+            formValues.a76 = locals.a76
+            formValues.a75 = locals.a75
+            formValues.a06 = locals.a06
+            formValues.a09 = locals.a09
+            formValues.a12 = locals.a12
+            formValues.a16 = locals.a16
+        }
+
+    }
+
+    const local = () => {
+        localStorage.setItem("from", JSON.stringify(formValues))
+    }
+
     const Diferencia = () => {
         setValuesdif({
             g05: formValues.g05 - Valuestot.g05,
@@ -214,6 +240,7 @@ const Needleresentr = () => {
         })
     }
 
+    // console.log((locals), "locals")
     return (
         <div>
             <Table striped hover size="sm" responsive="sm">
@@ -377,9 +404,12 @@ const Needleresentr = () => {
                     </tr>
                 </tbody>
             </Table>
+            <div></div>
             <div className='text-center'>
                 <button className="btn btn-lg btn-primary" onClick={Diferencia} >Calcular</button>
+                <button className="btn btn-lg btn-primary" onClick={local} >Guardar</button>
             </div>
+
 
             {/* <div className='text-center'>
                 <button className="btn btn-lg btn-primary" onClick={Dat} >dat</button>
