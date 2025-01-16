@@ -14,6 +14,7 @@ const Needle = () => {
     const [formValues, handleInputChange, reset] = useForm({
         cod: '',
         name: '',
+        reporta: "",
         g05: '',
         g09: '',
         a75: '',
@@ -22,11 +23,11 @@ const Needle = () => {
         a09: '',
         a12: '',
         a16: '',
-        obs: ''
+        obs: '',
     });
     const code = ["602", "603", "605", "608", "609", "900", "615", "606", "624"]
     const nombre = ["Javier Medina", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Ruben Salinas", "Mantenimiento", "Yeimi Calderon", "Lesma Ibargüen", "Sandra Tilano"]
-    const { cod, name, g09, g05, a76, a75, a06, a09, a12, a16, obs } = formValues;
+    const { cod, name, reporta, g09, g05, a76, a75, a06, a09, a12, a16, obs } = formValues;
 
     const isFormValid = () => {
         if (name.trim().length < 2) {
@@ -77,7 +78,7 @@ const Needle = () => {
     return (
         <div className="row justify-content-center cont">
             <div className="col-sm-5 px-3 p-2 ">
-                <h4 className="text-center mb-2">Registro de Agujas</h4>
+                <h4 className="text-center mb-3 p-1">Registro de Agujas</h4>
                 <form onSubmit={handleRegister}>
                     {
                         msgError && (
@@ -87,10 +88,10 @@ const Needle = () => {
                         )
                     }
 
-                    <div className="mb-1 contenedor">
-                        <label htmlFor="cod" className="form-label">Cod Tejedor</label>
+                    <div className="mb-3 contenedor ">
                         <input
                             type="text"
+                            placeholder='cod'
                             className="form-control"
                             id="cod"
                             name="cod"
@@ -99,16 +100,28 @@ const Needle = () => {
                             required={true}
                         />
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="name" className="form-label">Nombre </label>
+                    <div className="mb-3 ">
                         <input
                             type="text"
+                            placeholder='Nombre'
                             className="form-control"
                             id="name"
                             name="name"
                             value={name}
                             onChange={handleInputChange}
                             required={true}
+                            autocomplete="on"
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <input
+                            type="text"
+                            placeholder='Reporta'
+                            className="form-control"
+                            id="reporta"
+                            name="reporta"
+                            value={reporta}
+                            onChange={handleInputChange}
                             autocomplete="on"
                         />
                     </div>

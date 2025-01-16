@@ -5,14 +5,13 @@ import { Table } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useForm } from '../../hooks/useForm';
-import { Next } from 'react-bootstrap/esm/PageItem';
 
 const Needlelist = () => {
     const [results, setresults] = useState([])
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const [formValues, handleInputChange] = useForm()
-    const { cod, name, g09, g05, a76, a75, a06, a09, a12, a16, obs } = formValues;
+    const { cod, name, reporta, g09, g05, a76, a75, a06, a09, a12, a16, obs } = formValues;
     const [id, setid] = useState()
     const [needle, setneedle] = useState([])
     const [search, setSearch] = useState([])
@@ -168,6 +167,7 @@ const Needlelist = () => {
             .then(res => {
                 formValues.cod = res.data.cod
                 formValues.name = res.data.name
+                formValues.reporta = res.data.reporta
                 formValues.g09 = res.data.g09
                 formValues.g05 = res.data.g05
                 formValues.a76 = res.data.a76
@@ -218,6 +218,7 @@ const Needlelist = () => {
                         <th>0012</th>
                         <th>0016</th>
                         <th>Observaciones</th>
+                        <th>Reporta</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -251,6 +252,7 @@ const Needlelist = () => {
                             <td>{needle.a12}</td>
                             <td>{needle.a16}</td>
                             <td>{needle.obs}</td>
+                            <td>{needle.reporta}</td>
                             <td><button className="btn-dark" onClick={obtener.bind(this, needle._id)}>Editar</button></td>
                             <td><button className="btn-danger" onClick={handleSubmit.bind(this, needle._id)}>Elimina</button></td>
                         </tr>
@@ -265,29 +267,37 @@ const Needlelist = () => {
                 </Modal.Header>
                 <Modal.Body>
 
-                    <div className="mb-1 contenedor">
-                        <label htmlFor="cod" className="form-label">Cod Tejedor</label>
+                    <div className="mb-3 contenedor ">
                         <input
                             type="text"
+                            placeholder='cod'
                             className="form-control"
                             id="cod"
                             name="cod"
                             value={cod}
                             onChange={handleInputChange}
-                            required={true}
                         />
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="name" className="form-label">Nombre</label>
+                    <div className="mb-3 ">
                         <input
                             type="text"
+                            placeholder='Nombre'
                             className="form-control"
                             id="name"
                             name="name"
                             value={name}
                             onChange={handleInputChange}
-                            required={true}
-                            autoComplete='on'
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <input
+                            type="text"
+                            placeholder='Reporta'
+                            className="form-control"
+                            id="reporta"
+                            name="reporta"
+                            value={reporta}
+                            onChange={handleInputChange}
                         />
                     </div>
 
