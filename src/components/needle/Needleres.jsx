@@ -6,8 +6,8 @@ const Needleres = () => {
     const [need, setNeed] = useState()
     const [needle, setNeedle] = useState([])
     const [search, setsearch] = useState([])
-    const name = ["Javier Medina", "Yeimi Calderon", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Ruben Salinas", "Lesma Ibargüen", "Sandra Tilano", "Luis Rodriguez", "Mantenimiento", "TOTAL"]
-    const code = [602, 615, 603, 605, 608, 632, 606, 624, 636, 900]
+    const name = ["Javier Medina", "Yeimi Calderon", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Ruben Salinas", "Lesma Ibargüen", "Sandra Tilano", "Luis Rodriguez", "Claudia Vargas", "Windy Ramirez", "Mantenimiento", "TOTAL"]
+    const code = [602, 615, 603, 605, 608, 632, 606, 624, 636, 637, 601, 900]
     let i = 0
 
     useEffect(() => {
@@ -41,7 +41,7 @@ const Needleres = () => {
     //setNeedle(!search ? need : need.filter((dato) => dato.date.toLowerCase().includes(search.toLocaleLowerCase())))
 
     const suma = (res) => {
-        const suma = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        const suma = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
         for (let i = 0; i < code.length; i++) {
             res.filter(nombre => nombre.cod === code[i]).map(needle => (
                 suma[i][0] = suma[i][0] + needle.g09
@@ -72,7 +72,7 @@ const Needleres = () => {
             ))
         }
         for (let i = 0; i < suma.length; i++) {
-            suma[10][i] = suma[0][i] + suma[1][i] + suma[2][i] + suma[3][i] + suma[4][i] + suma[5][i] + suma[6][i] + suma[7][i] + suma[8][i]
+            suma[12][i] = suma[0][i] + suma[1][i] + suma[2][i] + suma[3][i] + suma[4][i] + suma[5][i] + suma[6][i] + suma[7][i] + suma[8][i]
         }
         suma.map(sum => (
             (sum.unshift(code[i], name[i]), i++)
