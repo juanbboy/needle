@@ -76,14 +76,25 @@ const Needlelist = () => {
     // }
 
     const searcher = (e) => {
-        // setresults(needle.filter((dato) => dato.name.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase())))
-        setSearch(needle.filter((dato) => dato.name.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase())))
-
+        setSearch(
+            needle.filter((dato) =>
+                dato.name?.toLowerCase().includes(e.target.value.toLocaleLowerCase()) ||
+                dato.obs?.toLowerCase().includes(e.target.value.toLocaleLowerCase()) ||
+                dato.date?.toLowerCase().includes(e.target.value.toLocaleLowerCase()) ||
+                dato.reporta?.toLowerCase().includes(e.target.value.toLocaleLowerCase())
+            )
+        );
     }
 
     const searcher2 = (e) => {
-        setSearch(search.filter((dato) => dato.name.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(e.target.value.toLocaleLowerCase()) || dato.date.toLowerCase().includes(e.target.value.toLocaleLowerCase())))
-
+        setSearch(
+            search.filter((dato) =>
+                dato.name?.toLowerCase().includes(e.target.value.toLocaleLowerCase()) ||
+                dato.obs?.toLowerCase().includes(e.target.value.toLocaleLowerCase()) ||
+                dato.date?.toLowerCase().includes(e.target.value.toLocaleLowerCase()) ||
+                dato.reporta?.toLowerCase().includes(e.target.value.toLocaleLowerCase())
+            )
+        );
     }
 
 
