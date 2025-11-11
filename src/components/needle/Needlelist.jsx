@@ -97,9 +97,6 @@ const Needlelist = () => {
         );
     }
 
-
-
-
     // const results = !search ? needle : needle.filter((dato) => dato.name.toLowerCase().includes(search.toLocaleLowerCase()) || dato.obs.toLowerCase().includes(search.toLocaleLowerCase()) || dato.date.toLowerCase().includes(search.toLocaleLowerCase()))
     // const results = !search ? needle : needle.filter((dato) => dato.name.toLowerCase().includes(search.toLocaleLowerCase()) & dato.date.toLowerCase().includes(search.toLocaleLowerCase()))
 
@@ -107,7 +104,7 @@ const Needlelist = () => {
     // )
     //results.reverse()
     const suma = () => {
-        console.log('entro')
+        console.log('entra')
         let g05 = ''
         let g09 = ''
         let a75 = ''
