@@ -6,7 +6,7 @@ const Needleres = () => {
     const [need, setNeed] = useState()
     const [needle, setNeedle] = useState([])
     const [search, setsearch] = useState([])
-    const name = ["Javier Medina", "Yeimi Calderon", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Ruben Salinas", "Lesma Ibargüen", "Sandra Tilano", "Luis Rodriguez", "Claudia Vargas", "Windy Ramirez", "Mantenimiento", "TOTAL"]
+    const name = ["Javier Medina", "Yeimi Calderon", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Ruben Salinas", "Lesma Ibargüen", "Sandra Tilano", "Luis Rodriguez", "Claudia Vargas", "Angelo Monroy", "Mantenimiento", "TOTAL"]
     const code = [602, 615, 603, 605, 608, 632, 606, 624, 636, 637, 601, 900]
     let i = 0
 
