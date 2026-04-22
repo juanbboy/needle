@@ -51,21 +51,24 @@ const Needleres = () => {
     //setNeedle(!search ? need : need.filter((dato) => dato.date.toLowerCase().includes(search.toLocaleLowerCase())))
 
     const suma = (res) => {
-        // Obtener códigos únicos y nombres asociados
+        // 1. Agrupar códigos únicos y asociarles un nombre (si existe)
         const codMap = new Map();
         res.forEach(item => {
             if (!codMap.has(item.cod)) {
                 codMap.set(item.cod, item.name || '');
             }
         });
-        const codigos = Array.from(codMap.keys());
-        const nombres = Array.from(codMap.values());
+        const codigos = Array.from(codMap.keys()); // Lista de códigos únicos
+        const nombres = Array.from(codMap.values()); // Lista de nombres asociados
 
-        // Inicializa matriz de sumas (filas dinámicas + 1 para total)
-        const suma = Array.from({ length: codigos.length + 1 }, () => Array(11).fill(0));
+        // 2. Inicializar matriz de sumas: una fila por código
+        let suma = Array.from({ length: codigos.length }, () => Array(11).fill(0));
 
+        // 3. Sumar los valores de cada campo por código
         codigos.forEach((cod, idx) => {
+            // Filtrar los registros que corresponden a este código
             const items = res.filter(nombre => nombre.cod === cod);
+            // Sumar los campos numéricos
             items.forEach(needle => {
                 suma[idx][2] += needle.g09 || 0;
                 suma[idx][3] += needle.g05 || 0;
@@ -76,20 +79,32 @@ const Needleres = () => {
                 suma[idx][8] += needle.a12 || 0;
                 suma[idx][9] += needle.a16 || 0;
             });
+            // Calcular el total de la fila (suma de los campos anteriores)
             suma[idx][10] = suma[idx][2] + suma[idx][3] + suma[idx][4] + suma[idx][5] + suma[idx][6] + suma[idx][7] + suma[idx][8] + suma[idx][9];
+            // Asignar código y nombre a la fila
             suma[idx][0] = cod;
             suma[idx][1] = nombres[idx] || '';
         });
 
-        // Suma total por columna (última fila)
+        // 4. Ordenar las filas de mayor a menor por el total, dejando el código 900 siempre al final
+        const suma900 = suma.find(row => row[0] === 900); // Buscar la fila con código 900
+        suma = suma.filter(row => row[0] !== 900); // Eliminar la fila 900 del arreglo principal
+        suma.sort((a, b) => b[10] - a[10]); // Ordenar de mayor a menor por total
+        if (suma900) suma.push(suma900); // Agregar la fila 900 al final si exi
+        // ste
+
+        // 5. Calcular la fila de totales por columna (última fila)
+        const totalRow = Array(11).fill(0);
         for (let col = 2; col <= 10; col++) {
-            for (let row = 0; row < codigos.length; row++) {
-                suma[codigos.length][col] += suma[row][col];
+            for (let row = 0; row < suma.length; row++) {
+                totalRow[col] += suma[row][col];
             }
         }
-        suma[codigos.length][0] = '';
-        suma[codigos.length][1] = 'TOTAL';
+        totalRow[0] = '';
+        totalRow[1] = 'TOTAL';
+        suma.push(totalRow); // Agregar la fila de totales al final
 
+        // 6. Actualizar el estado para renderizar la tabla
         setNeedle(suma);
     }
 
