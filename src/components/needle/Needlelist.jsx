@@ -5,8 +5,10 @@ import { Table } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useForm } from '../../hooks/useForm';
+import { useSelector } from 'react-redux';
 
 const Needlelist = () => {
+    const { uid } = useSelector(state => state.auth)
     const [results, setresults] = useState([])
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -227,6 +229,7 @@ const Needlelist = () => {
                         <th>0016</th>
                         <th>Observaciones</th>
                         <th>Reporta</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -261,8 +264,16 @@ const Needlelist = () => {
                             <td>{needle.a16}</td>
                             <td>{needle.obs}</td>
                             <td>{needle.reporta}</td>
-                            <td><button className="btn-dark" onClick={obtener.bind(this, needle._id)}>Editar</button></td>
-                            <td><button className="btn-danger" onClick={handleSubmit.bind(this, needle._id)}>Elimina</button></td>
+                            {uid === "nVWOi6EO3eNnNEKICTJGfg67bT83" ? (
+                                <>
+                                    <td>
+                                        <button className="btn-dark" onClick={obtener.bind(this, needle._id)}>Editar</button>
+                                    </td>
+                                    <td>
+                                        <button className="btn-danger" onClick={handleSubmit.bind(this, needle._id)}>Elimina</button>
+                                    </td>
+                                </>
+                            ) : null}
                         </tr>
                     )}
 
