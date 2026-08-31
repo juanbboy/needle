@@ -44,6 +44,15 @@ const Needle = () => {
         return true;
     }
 
+    const getTotalCantidad = () => {
+        const campos = ['g09', 'g05', 'a76', 'a75', 'a06', 'a09', 'a12', 'a16'];
+
+        return campos.reduce((total, campo) => {
+            const valor = Number(formValues[campo] || 0);
+            return total + (isNaN(valor) ? 0 : valor);
+        }, 0);
+    };
+
     const handleRegister = (e) => {
         e.preventDefault();
         if (isFormValid()) {
@@ -51,17 +60,33 @@ const Needle = () => {
 
             // axios.post(`http://localhost:4002/api/regneedle`, formValues)
             // axios.post(`https://needlecpd.herokuapp.com/api/regneedle`, formValues)
-            axios.post(`https://bakend.vercel.app/api/regneedle`, formValues)
-                .then(res => {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'correcto',
-                        showConfirmButton: false,
-                        timer: 1200
-                    })
-                    reset();
-                    navigate("/needlelist")
-                })
+            // axios.post(`https://bakend.vercel.app/api/regneedle`, formValues)
+            //     .then(res => {
+            //         Swal.fire({
+            //             icon: 'success',
+            //             title: 'correcto',
+            //             showConfirmButton: false,
+            //             timer: 1200
+            //         })
+            //         reset();
+            //         navigate("/needlelist")
+            //     })
+
+
+            const totalCantidad = getTotalCantidad();
+            axios.post("http://localhost:4002/api/send-email", {
+                to: "juanca.rr@hotmail.com",
+                subject: `Daño de Agujas ${formValues.name}`,
+                text: `Se registra: ${formValues.name} - Código: ${formValues.cod}`,
+                html: `<h3>Daño de aguja</h3>
+                <p>Nombre: ${formValues.name}</p>
+                <p>Código: ${formValues.cod}</p>
+                <p>Reporta: ${formValues.reporta}</p>
+                <p>Cantidad Total: ${totalCantidad}</p>
+                <p>Observaciones: ${formValues.obs}</p>`
+            })
+                .then(() => console.log("Email enviado"))
+                .catch(err => console.error("Error email:", err));
         }
     }
 
