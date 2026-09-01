@@ -74,7 +74,7 @@ const Needle = () => {
 
             if (operativo === 'si') {
                 const totalCantidad = getTotalCantidad();
-                axios.post("http://localhost:4002/api/send-email", {
+                axios.post("https://bakend.vercel.app/api/send-email", {
                     to: "supervisor.textil@cidugotex.com;desarrollo.nylon@cidugotex.com",
                     subject: `Daño de Agujas ${formValues.name}`,
                     text: `Se registra: ${formValues.name} - Código: ${formValues.cod}`,
