@@ -24,10 +24,11 @@ const Needle = () => {
         a12: '',
         a16: '',
         obs: '',
+        operativo: ''
     });
     const code = ["602", "603", "605", "608", "632", "900", "615", "606", "624", "636", "637", "609", "901"]
     const nombre = ["Javier Medina", "Luz Dary Monroy", "Luz Dary paez", "Mirella Gomez", "Ruben Salinas", "Mantenimiento", "Yeimi Calderon", "Lesma Ibargüen", "Sandra Tilano", "Luis Rodriguez", "Claudia Vargas", "Angelo Monroy", "Agujas Torcidas"]
-    const { cod, name, reporta, g09, g05, a76, a75, a06, a09, a12, a16, obs } = formValues;
+    const { cod, name, reporta, g09, g05, a76, a75, a06, a09, a12, a16, obs, operativo } = formValues;
 
     const isFormValid = () => {
         if (name.trim().length < 2) {
@@ -56,40 +57,41 @@ const Needle = () => {
     const handleRegister = (e) => {
         e.preventDefault();
         if (isFormValid()) {
-            // dispatch(startRegisterEmailPassword(name));
 
+            // dispatch(startRegisterEmailPassword(name));
             // axios.post(`http://localhost:4002/api/regneedle`, formValues)
             // axios.post(`https://needlecpd.herokuapp.com/api/regneedle`, formValues)
-            // axios.post(`https://bakend.vercel.app/api/regneedle`, formValues)
-            //     .then(res => {
-            //         Swal.fire({
-            //             icon: 'success',
-            //             title: 'correcto',
-            //             showConfirmButton: false,
-            //             timer: 1200
-            //         })
-            //         reset();
-            //         navigate("/needlelist")
-            //     })
+            axios.post(`https://bakend.vercel.app/api/regneedle`, formValues)
+                .then(res => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'correcto',
+                        showConfirmButton: false,
+                        timer: 1200
+                    })
 
+                })
 
-            const totalCantidad = getTotalCantidad();
-            axios.post("http://localhost:4002/api/send-email", {
-                to: "juanca.rr@hotmail.com",
-                subject: `Daño de Agujas ${formValues.name}`,
-                text: `Se registra: ${formValues.name} - Código: ${formValues.cod}`,
-                html: `<h3>Daño de aguja</h3>
+            if (operativo === 'si') {
+                const totalCantidad = getTotalCantidad();
+                axios.post("http://localhost:4002/api/send-email", {
+                    to: "supervisor.textil@cidugotex.com;desarrollo.nylon@cidugotex.com",
+                    subject: `Daño de Agujas ${formValues.name}`,
+                    text: `Se registra: ${formValues.name} - Código: ${formValues.cod}`,
+                    html: `<h3>Daño de aguja</h3>
                 <p>Nombre: ${formValues.name}</p>
                 <p>Código: ${formValues.cod}</p>
                 <p>Reporta: ${formValues.reporta}</p>
-                <p>Cantidad Total: ${totalCantidad}</p>
-                <p>Observaciones: ${formValues.obs}</p>`
-            })
-                .then(() => console.log("Email enviado"))
-                .catch(err => console.error("Error email:", err));
+                <p>Observaciones: ${formValues.obs}</p>
+                <p>Cantidad Total: ${totalCantidad}</p>`
+                })
+                    .then(() => console.log("Email enviado"))
+                    .catch(err => console.error("Error email:", err));
+            }
+            reset();
+            navigate("/needlelist")
         }
     }
-
 
     const event = (e) => {
         for (let i = 0; i < code.length; i++) {
@@ -148,8 +150,28 @@ const Needle = () => {
                             value={reporta}
                             onChange={handleInputChange}
                             autocomplete="on"
+                            required={true}
                         />
                     </div>
+
+                    <div className="mb-3">
+                        {/* <label htmlFor="operativo" className="form-label">Operativo</label> */}
+                        <select
+                            className="form-select"
+                            placeholder='Operativo'
+                            type="text"
+                            id="operativo"
+                            name="operativo"
+                            value={operativo}
+                            onChange={handleInputChange}
+                            required={true}
+                        >
+                            <option value="" disabled selected>Operativo</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
 
                     <div className="row mb-3 justify-content-center">
                         <div className="col-2">
@@ -284,6 +306,7 @@ const Needle = () => {
                                 name="obs"
                                 value={obs}
                                 onChange={handleInputChange}
+                                required={true}
                             />
                         </div>
                     </div>
