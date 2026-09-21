@@ -177,7 +177,6 @@ const Needlelist = () => {
             .then(res => {
                 formValues.cod = res.data.cod
                 formValues.name = res.data.name
-                formValues.reporta = res.data.reporta
                 formValues.g09 = res.data.g09
                 formValues.g05 = res.data.g05
                 formValues.a76 = res.data.a76

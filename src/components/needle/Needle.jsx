@@ -69,27 +69,26 @@ const Needle = () => {
                         showConfirmButton: false,
                         timer: 1200
                     })
-
-                })
-
-            if (operativo === 'si') {
-                const totalCantidad = getTotalCantidad();
-                axios.post("https://bakend.vercel.app/api/send-email", {
-                    to: "supervisor.textil@cidugotex.com;desarrollo.nylon@cidugotex.com",
-                    subject: `Daño de Agujas ${formValues.name}`,
-                    text: `Se registra: ${formValues.name} - Código: ${formValues.cod}`,
-                    html: `<h3>Daño de aguja</h3>
+                    if (operativo === 'si') {
+                        const totalCantidad = getTotalCantidad();
+                        axios.post("https://bakend.vercel.app/api/send-email", {
+                            to: "supervisor.textil@cidugotex.com;ccrodriguez@cidugotex.com;desarrollo.nylon@cidugotex.com",
+                            subject: `Daño de Agujas ${formValues.name}`,
+                            text: `Se registra: ${formValues.name} - Código: ${formValues.cod}`,
+                            html: `<h3>Daño de aguja</h3>
                 <p>Nombre: ${formValues.name}</p>
                 <p>Código: ${formValues.cod}</p>
                 <p>Reporta: ${formValues.reporta}</p>
                 <p>Observaciones: ${formValues.obs}</p>
                 <p>Cantidad Total: ${totalCantidad}</p>`
+                        })
+                            .then(() => console.log("Email enviado"))
+                            .catch(err => console.error("Error email:", err));
+                    }
+                    reset();
+                    navigate("/needlelist")
+
                 })
-                    .then(() => console.log("Email enviado"))
-                    .catch(err => console.error("Error email:", err));
-            }
-            reset();
-            navigate("/needlelist")
         }
     }
 
